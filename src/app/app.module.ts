@@ -12,7 +12,7 @@ import { StatisticFieldsetComponent } from './components/statistic-fieldset/stat
 import { HeroComponent } from './components/hero/hero.component';
 import {MatButtonModule} from '@angular/material/button';
 import { TitleComponent } from './components/title/title.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +28,8 @@ import { TitleComponent } from './components/title/title.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
