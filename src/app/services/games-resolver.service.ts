@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DataStorageService } from './data-storage.service';
-import { GamesService } from './games-service.service';
+import { GamesService } from './games.service';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Game } from '../model/game';
 

@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import {  } from '@angular/core/testing';
+
 
 @Component({
   selector: 'app-statistic-fieldset',
@@ -7,5 +9,4 @@ import { Component, Input } from '@angular/core';
 })
 export class StatisticFieldsetComponent {
   @Input() title : string = "";
-
 }

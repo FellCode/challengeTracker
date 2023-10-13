@@ -1,0 +1,15 @@
+<div class="flex flex-wrap p-6 justify-center text-lg font-serif">
+    <a href="#"
+        class="bg-gray-200 flex-grow text-black border-l-8 {{game.done ? 'border-green-900' : 'border-red-900'}} rounded-md px-3 py-2 w-full">
+        {{game.name}}
+
+        <div class="text-gray-500 font-thin text-sm pt-1">
+            <span class="p-2">Genre: {{game.genre}}</span>
+            <span class="p-2">Platform: {{game.platform}}</span>
+            <span class="p-2">Started: {{game.startDate != null ? game.startDate : 'Not yet started'}}</span>
+            <span class="p-2">Finished: {{game.finishedDate != null ? game.finishedDate : 'Not yet finished'}}</span>
+            <span class="p-2">Rating: {{game.rating != null ? game.rating : 'Unrated'}}</span>
+        
+        </div>
+    </a>
+</div>

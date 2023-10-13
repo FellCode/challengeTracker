@@ -1,15 +1,23 @@
-<app-hero></app-hero>
-<div class="flex flex-row">
+<div class="flex flex-col">
+    <app-hero></app-hero>
+    <app-current-game class="m-2"></app-current-game>
+    <div class="flex flex-row flex-wrap justify-stretch">
+        <app-statistic-fieldset
+            title='Beendete Spiele'>
+            {{getFinishedGames()}} bisher beendet.
+        </app-statistic-fieldset>
+        <app-statistic-fieldset
+            title='Durchschnittliche Bewertung'>
+            {{getAverageRating()}}
+        </app-statistic-fieldset>
+        <app-statistic-fieldset
+        title='Beendete Spiele'>
+        {{getFinishedGames()}} bisher beendet.
+    </app-statistic-fieldset>
     <app-statistic-fieldset
-    title='Ich bin der Titel!'>
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-</app-statistic-fieldset>
-<app-statistic-fieldset
-    title='Ich bin der Titel!'>
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-</app-statistic-fieldset>
-<app-statistic-fieldset
-    title='Ich bin der Titel!'>
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-</app-statistic-fieldset>
+        title='Durchschnittliche Bewertung'>
+        {{getAverageRating()}}
+    </app-statistic-fieldset>
+    </div>
 </div>
+

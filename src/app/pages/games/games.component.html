@@ -1,1 +1,12 @@
-<p>games works!</p>
+<div *ngIf="games.length > 0">
+    <ul>
+        <li *ngFor="let game of games">
+            <app-list-entry
+                [game]="game">
+            </app-list-entry>
+        </li>
+    </ul>
+</div>
+<div *ngIf="games.length <= 0">
+    <h1>Keine Spiele vorhanden</h1>
+</div>

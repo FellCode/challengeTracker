@@ -13,6 +13,8 @@ import { HeroComponent } from './components/hero/hero.component';
 import {MatButtonModule} from '@angular/material/button';
 import { TitleComponent } from './components/title/title.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ListEntryComponent } from './list-entry/list-entry.component';
+import { CurrentGameComponent } from './current-game/current-game.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     StatisticFieldsetComponent,
     HeroComponent,
-    TitleComponent
+    TitleComponent,
+    ListEntryComponent,
+    CurrentGameComponent
   ],
   imports: [
     BrowserModule,
