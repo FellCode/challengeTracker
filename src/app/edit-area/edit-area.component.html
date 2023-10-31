@@ -1,0 +1,40 @@
+<div class="flex p-6 flex-col text-lg font-serif bg-gray-200 text-black rounded-md mt-2">
+    <h2>Edit</h2>
+    <form class="example-form">
+        <mat-form-field class="p-2">
+          <mat-label>Titel</mat-label>
+          <input matInput placeholder="Name" value="{{game.name}}">
+        </mat-form-field>
+
+        <mat-form-field class="p-2">
+            <mat-label>Genre</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let item of getMenuItems()" value="{{game.genre}}">
+                {{item}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          
+          <mat-form-field class="p-2">
+            <mat-label>Gestartet Am</mat-label>
+            <input matInput [matDatepicker]="startPicker">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+
+
+          <mat-form-field class="p-2">
+            <mat-label>Beendet Am</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="p-2">
+            <mat-label>Notizen</mat-label>
+            <textarea matInput value="{{game.notes}}"></textarea>
+        </mat-form-field>
+      </form>
+</div>

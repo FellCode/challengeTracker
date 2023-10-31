@@ -1,0 +1,10 @@
+<div class=" flex flex-col border-2 border-gray-300 rounded-md">
+    <div class="flex justify-center">
+        <span id="timerText" class="m-2 font-semibold text-2xl">{{formattedTime}}</span>
+    </div>
+    <div class="flex">
+        <button mat-raised-button color="primary"class="m-2" (click)="startTimer()">Start</button>
+        <button mat-raised-button color="primary" class="m-2" (click)="stopTimer()">Stop</button>
+        <button mat-raised-button color="primary" class="m-2" (click)="pauseTimer()">Pause</button>
+    </div>
+</div>

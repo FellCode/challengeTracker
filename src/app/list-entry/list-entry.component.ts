@@ -9,4 +9,9 @@ import { Game } from '../model/game';
 export class ListEntryComponent {
   @Input()
   game!: Game;
+  editMode: boolean = false;
+
+  toggleEdit(){
+    this.editMode = !this.editMode;
+  }
 }
