@@ -25,8 +25,9 @@ export class GamesService {
     this.gamesChanged.next(this.games.slice());
   }
 
-  updateGame(index: number, newGame: Game){
-    this.games[index] = newGame;
+  updateGame(newGame: Game){
+    const foundIndex = this.games.findIndex(x => x.id == newGame.id);
+    this.games[foundIndex] = newGame;
     this.gamesChanged.next(this.games.slice());
   }
 

@@ -1,13 +1,15 @@
 import requests;
 
-with open('games.txt','r') as file:
+with open('games.txt', 'r') as file:
     names = file.read().splitlines()
 
 api_endpoint = 'http://localhost:8080/api/v1/games'
 
-for name in names:
+for name in names[0:9]:
     data = {
-        'name' : name
+        'name': name,
+        'platform': 'GBA',
+        'genre': 'ACTION'
     }
 
     response = requests.post(api_endpoint, json=data)

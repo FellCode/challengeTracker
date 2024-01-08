@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<mat-dialog-content>
+   <p>{{data.message}}</p>
+   <mat-form-field class="p-2">
+    <mat-label>Beendet Am</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="inputValue">
+    <mat-hint>DD/MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+   <button mat-button (click)="onDismiss()">Cancel</button>
+   <button mat-button (click)="onConfirm()" color="primary">Confirm</button>
+</mat-dialog-actions>

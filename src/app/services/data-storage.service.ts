@@ -4,6 +4,7 @@ import { map, tap, take, exhaustMap } from 'rxjs/operators';
 import { GamesService } from './games.service';
 import { Game } from '../model/game';
 import { Genre } from '../model/genre';
+import { Platform } from '../model/platform';
 
 @Injectable({
   providedIn: 'root'
@@ -29,10 +30,51 @@ export class DataStorageService {
     return this.http
     .get<Game[]>(this.BASE_URL)
     .pipe(
+      map(response => this.convertPlatformToEnum(response)),
+      map(response => this.convertGenreToEnum(response)),
       tap(games => {
         this.gamesService.setGames(games);
         console.log(games);
       })
     );
+  }
+
+  updateGame(updatedGame: Game){
+    this.http
+      .put(
+  `${this.BASE_URL}`,
+        updatedGame
+        )
+    .subscribe(response => {
+      console.log(response);
+    });
+  }
+
+  private convertPlatformToEnum(data: any): any {
+    const enumPropertyName = 'platform';
+
+    if (data && data[enumPropertyName] !== undefined) {
+      data[enumPropertyName] = this.getEnumValueFromString(Platform, data[enumPropertyName]);
+    }
+
+    return data;
+  }
+
+  private convertGenreToEnum(data: any): any {
+    const enumPropertyName = 'genre';
+
+    if (data && data[enumPropertyName] !== undefined) {
+      data[enumPropertyName] = this.getEnumValueFromString(Genre, data[enumPropertyName]);
+    }
+
+    return data;
+  }
+
+  private getEnumValueFromString(enumObject: any, stringValue: string): any {
+    if (Object.values(enumObject).includes(stringValue as string)) {
+      return stringValue as string;
+    } else {
+      return undefined;
+    }
   }
 }

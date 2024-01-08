@@ -4,7 +4,7 @@
         <hr />
         <div class="text-lg pt-2">
             <!-- Content-->
-            <app-timer></app-timer>
+            <app-timer (timeUpdated)="timeUpdated($event)"></app-timer>
         </div>
     </div>
     <div *ngIf="!game">

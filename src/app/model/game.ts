@@ -2,6 +2,7 @@ import { Genre } from "./genre";
 import { Platform } from "./platform";
 
 export class Game {
+    public id: number;
     public name: string;
     public notes: string;
     public genre: Genre;
@@ -10,8 +11,10 @@ export class Game {
     public startDate: Date;
     public finishedDate: Date;
     public done: boolean;
+    public elapsedTimeInSeconds : number;
 
-    constructor(name: string, notes: string, genre: Genre, platform: Platform, rating: number, startDate:Date, finishedDate:Date, done:boolean){
+    constructor(id: number,name: string, notes: string, genre: Genre, platform: Platform, rating: number, startDate:Date, finishedDate:Date, done:boolean, elapsedTimeInSecodns: number){
+        this.id = id;
         this.name = name;
         this.notes = notes;
         this.genre = genre;
@@ -20,5 +23,6 @@ export class Game {
         this.startDate = startDate;
         this.finishedDate = finishedDate;
         this.done = done;
+        this.elapsedTimeInSeconds = elapsedTimeInSecodns;
     }
 }

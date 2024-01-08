@@ -1,15 +1,23 @@
-<div class="flex p-6 flex-col text-lg font-serif bg-gray-200 text-black rounded-md mt-2">
-    <h2>Edit</h2>
-    <form class="example-form">
+<div class="flex flex-col text-lg text-white font-serif bg-gray-800 rounded-md mt-2 p-6">
+    <span class="font-bold">Bearbeiten</span>
+    <form [formGroup]="editForm">
         <mat-form-field class="p-2">
           <mat-label>Titel</mat-label>
-          <input matInput placeholder="Name" value="{{game.name}}">
+          <input matInput type="text" placeholder="Name" formControlName="name">
         </mat-form-field>
-
         <mat-form-field class="p-2">
             <mat-label>Genre</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let item of getMenuItems()" value="{{game.genre}}">
+            <mat-select formControlName="genre">
+              <mat-option *ngFor="let item of getMenuItems()" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="p-2">
+            <mat-label>Platform</mat-label>
+            <mat-select formControlName="platform">
+              <mat-option *ngFor="let item of getPlatformItems()" [value]="item">
                 {{item}}
               </mat-option>
             </mat-select>
@@ -18,23 +26,25 @@
           
           <mat-form-field class="p-2">
             <mat-label>Gestartet Am</mat-label>
-            <input matInput [matDatepicker]="startPicker">
+            <input matInput [matDatepicker]="startPicker" formControlName="startDate">
             <mat-hint>DD/MM/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
             <mat-datepicker #startPicker></mat-datepicker>
         </mat-form-field>
-
-
-          <mat-form-field class="p-2">
-            <mat-label>Beendet Am</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-hint>DD/MM/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
         <mat-form-field class="p-2">
-            <mat-label>Notizen</mat-label>
-            <textarea matInput value="{{game.notes}}"></textarea>
+          <mat-label>Rating</mat-label>
+          <input matInput type="number" placeholder="Rating" min="0.5" max="10" step="0.5" formControlName="rating">
         </mat-form-field>
+        <div class="flex flex-row w-full min-h-[150px] flex-grow">
+          <mat-form-field class="p-2 w-full min-h-[150px]">
+            <mat-label>Notizen</mat-label>
+            <textarea class="w-full min-h-[150px] flex-grow" matInput value="{{game.notes}}" formControlName="notes"></textarea>
+          </mat-form-field>
+        </div>
+
       </form>
+      <div class="flex flex-row-reverse">
+        <button (click)="onSave()" class="ml-2" mat-raised-button color="primary">Speichern</button>
+        <button (click)="onCancel()"mat-raised-button color="warn">Abbrechen</button>
+      </div>
 </div>

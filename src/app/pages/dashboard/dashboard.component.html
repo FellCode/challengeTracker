@@ -1,23 +1,42 @@
 <div class="flex flex-col">
     <app-hero></app-hero>
     <app-current-game class="m-2"></app-current-game>
-    <div class="flex flex-row flex-wrap justify-stretch">
+     <div class="flex flex-row">
         <app-statistic-fieldset
+            class="flex-grow"
             title='Beendete Spiele'>
             {{getFinishedGames()}} bisher beendet.
         </app-statistic-fieldset>
         <app-statistic-fieldset
+            class="flex-grow"
             title='Durchschnittliche Bewertung'>
             {{getAverageRating()}}
         </app-statistic-fieldset>
         <app-statistic-fieldset
-        title='Beendete Spiele'>
-        {{getFinishedGames()}} bisher beendet.
-    </app-statistic-fieldset>
-    <app-statistic-fieldset
-        title='Durchschnittliche Bewertung'>
-        {{getAverageRating()}}
-    </app-statistic-fieldset>
+            class="flex-grow"
+            title='Durchschnittliche Bewertung'>
+            {{getAverageRating()}}
+        </app-statistic-fieldset>
+        <app-statistic-fieldset
+            class="flex-grow"
+            title='Häufigstes Genre'>
+            {{getMostPopularGenre() | titlecase}}
+        </app-statistic-fieldset>
+      </div>
+      <div class="flex flex-row">
+        <app-statistic-fieldset
+          class="flex-grow"
+          title='Top 5 Spiele'>
+          <ul>
+            <li *ngFor="let game of getFiveBestGames()">{{game}}</li>
+          </ul>
+        </app-statistic-fieldset>
+        <app-statistic-fieldset
+          class="flex-grow"
+          title='Flop 5 Spiele'>
+          <ul>
+            <li *ngFor="let game of getFiveWorstGames()">{{game}}</li>
+          </ul>
+        </app-statistic-fieldset>
     </div>
 </div>
-

@@ -1,18 +1,28 @@
-<div class="flex flex-col flex-wrap p-6 justify-center text-lg font-serif">
-    <a (click)="toggleEdit()"
-        class="bg-gray-200 flex-grow text-black border-l-8 {{game.done ? 'border-green-900' : 'border-red-900'}} rounded-md px-3 py-2 w-full">
-        {{game.name}}
+<div class="flex flex-row flex-wrap justify-center text-lg font-serif m-6 ml-2">
 
-        <div class="text-gray-500 font-thin text-sm pt-1">
-            <span class="p-2">Genre: {{game.genre}}</span>
-            <span class="p-2">Platform: {{game.platform}}</span>
-            <span class="p-2">Started: {{game.startDate != null ? game.startDate : 'Not yet started'}}</span>
-            <span class="p-2">Finished: {{game.finishedDate != null ? game.finishedDate : 'Not yet finished'}}</span>
-            <span class="p-2">Rating: {{game.rating != null ? game.rating : 'Unrated'}}</span>
-        
-        </div>
-    </a>
-    <app-edit-area *ngIf="editMode"
-    [game]="game">
-    </app-edit-area>
-</div>
+      <div class=" flex bg-gray-800 flex-grow flex-row text-white rounded-md p-2 w-full">
+          <div class="flex mr-2">
+            <img src="{{getImageURL(game)}}" alt="Game Cover Image"/>
+          </div>
+          <div class="flex-col ml-2 w-full">
+            <span class="font-bold">{{game.name}}</span>
+            <div class="text- font-thin text-sm pt-1">
+              <mat-chip *ngIf="game.genre" disabled>{{game.genre | titlecase}}</mat-chip>
+              <mat-chip *ngIf="game.platform" disabled>{{game.platform}}</mat-chip>
+              <mat-chip disabled>{{game.rating ? game.rating : 'Unrated'}}
+                <mat-icon *ngIf="game.rating" matChipTrailingIcon>star</mat-icon>
+              </mat-chip>
+            </div>
+            <mat-icon class="pt-2" aria-hidden="false" aria-label="Example home icon" fontIcon="sports_score"></mat-icon>{{game.finishedDate ? (game.finishedDate | date:'dd.MM.yyyy') : "-"}}
+            <div class="flex flex-row-reverse">
+              <button (click)="toggleEdit()" class="m-2" mat-raised-button color="primary">Bearbeiten</button>
+              <button (click) = "openFinishDialog()" *ngIf="isCompletable()" class="m-2" mat-raised-button color="primary">Abschließen</button>
+            </div>
+          </div>
+      </div>
+      <app-edit-area *ngIf="editMode"
+      (toggleEdit) = "toggleEdit($event)"
+      [game]="game">
+      </app-edit-area>
+  </div>
+

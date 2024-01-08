@@ -1,12 +1,18 @@
-<div *ngIf="games.length > 0">
-    <ul>
-        <li *ngFor="let game of games">
+<div class="flex flex-row">
+  <div class="flex w-1/4 h-fit bg-gray-800 m-6 mr-2 rounded-md p-2">
+    <app-filter class="w-full" (filterChanged)="updateFilter($event)"></app-filter>
+  </div>
+
+  <div class="flex w-3/4">
+      <ul *ngIf="games.length > 0">
+        <li *ngFor="let game of filteredGames">
             <app-list-entry
                 [game]="game">
             </app-list-entry>
         </li>
     </ul>
-</div>
-<div *ngIf="games.length <= 0">
-    <h1>Keine Spiele vorhanden</h1>
+    <div *ngIf="games.length <= 0" class="m-6">
+      <h1 class="text-white">Keine Spiele vorhanden</h1>
+    </div>
+  </div>
 </div>

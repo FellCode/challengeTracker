@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -10,6 +10,9 @@ export class TimerComponent {
   private startTime: number = 0;
   public isRunning: boolean = false;
   public elapsedTime: number = 0;
+
+  @Output()
+  timeUpdated = new EventEmitter<number>();
 
   ngOnInit() {
     // Load elapsed time from localStorage when the component initializes
@@ -33,6 +36,7 @@ export class TimerComponent {
   private saveElapsedTime() {
     // Save elapsed time to localStorage
     localStorage.setItem('elapsedTime', this.elapsedTime.toString());
+    this.timeUpdated.emit(this.elapsedTime)
   }
 
   // ... (previous methods remain unchanged)
