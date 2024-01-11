@@ -34,4 +34,8 @@ export class GamesService {
   deleteGame(index: number) {
     this.gamesChanged.next(this.games.slice());
   }
+
+  getCurrentGame() : Game | undefined {
+    return this.games.find(game => game.startDate != null && game.finishedDate == null);
+  }
 }

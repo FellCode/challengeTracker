@@ -30,9 +30,14 @@ export class FilterComponent implements OnInit{
     return Object.keys(Genre);
   }
   
+  resetFilter(){
+    this.filterForm.reset();
+    console.log("called")
+  }
+
   initForm() {
     this.filterForm = this.fb.group({
-      name: [""],
+      name: [null],
       platform: [null],
       genre: [null],
       finished: [null]
@@ -41,8 +46,7 @@ export class FilterComponent implements OnInit{
 
   subscribeToFormChanges() {
     this.filterForm.valueChanges.subscribe((filterValues: Filter) => {
-      // Do something with the updated filter values
-      console.dir(filterValues)
+      console.log(filterValues.finished)
       this.filterChanged.emit(filterValues);
     });
   }

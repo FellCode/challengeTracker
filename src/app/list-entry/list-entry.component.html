@@ -15,7 +15,7 @@
             </div>
             <mat-icon class="pt-2" aria-hidden="false" aria-label="Example home icon" fontIcon="sports_score"></mat-icon>{{game.finishedDate ? (game.finishedDate | date:'dd.MM.yyyy') : "-"}}
             <div class="flex flex-row-reverse">
-              <button (click)="toggleEdit()" class="m-2" mat-raised-button color="primary">Bearbeiten</button>
+              <button (click)="toggleEdit()" class="m-2" mat-raised-button color="primary" disabled="{{editMode}}">Bearbeiten</button>
               <button (click) = "openFinishDialog()" *ngIf="isCompletable()" class="m-2" mat-raised-button color="primary">Abschließen</button>
             </div>
           </div>

@@ -24,7 +24,8 @@ export class GamesComponent implements OnInit {
       return (
         (event.platform === null || item.platform === event.platform) &&
         (event.genre === null || item.genre === event.genre) &&
-        (event.name === "" || item.name.toLowerCase().includes(event.name.toLowerCase()))
+        (event.finished === null || (item.finishedDate != undefined) === event.finished) &&
+        ((event.name === "" || event.name == undefined) || item.name.toLowerCase().includes(event.name.toLowerCase()))
       )
     })
     this.changeDetection.detectChanges();

@@ -56,6 +56,15 @@ export class EditAreaComponent implements OnInit {
     this.toggleEdit.emit(false);
   }
 
+//  onFileSelected(event: any) {
+//    this.selectedFile = event.target.files[0];
+//  }
+
+//  uploadImage(){
+//    this.dataStorageService.uploadImage(this.game.id,this.selectedFile)
+//  }
+
+
   private updateGameFromForm(){
     this.game.name = this.editForm.value.name;
     this.game.genre = this.editForm.value.genre;

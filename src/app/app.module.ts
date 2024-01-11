@@ -15,10 +15,11 @@ import { StatisticFieldsetComponent } from './components/statistic-fieldset/stat
 import { HeroComponent } from './components/hero/hero.component';
 import { TitleComponent } from './components/title/title.component';
 import { ListEntryComponent } from './list-entry/list-entry.component';
-import { CurrentGameComponent } from './current-game/current-game.component';
 import { TimerComponent } from './timer/timer.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { EditAreaComponent } from './edit-area/edit-area.component';
+import { FinishPopupComponent } from './finish-popup/finish-popup.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -29,9 +30,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { FinishPopupComponent } from './finish-popup/finish-popup.component';
-import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
-
+//import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
+import { MAT_DATE_LOCALE } from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -44,7 +44,6 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     HeroComponent,
     TitleComponent,
     ListEntryComponent,
-    CurrentGameComponent,
     TimerComponent,
     EditAreaComponent,
     FilterComponent,
@@ -68,7 +67,10 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     MatIconModule,
     MatCheckboxModule
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    //{ provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

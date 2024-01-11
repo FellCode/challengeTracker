@@ -23,6 +23,12 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <div class="w-full bg-white rounded-t-sm p-2">
+        <mat-checkbox color="primary" formControlName="finished">Abgeschlossen</mat-checkbox>
+      </div>
+      <div class="flex flex-row-reverse">
+         <button mat-raised-button color="primary" (click)="resetFilter()" class="mt-6">Filter zurücksetzen</button>
+      </div>
      </form>
   </div>
 </div>

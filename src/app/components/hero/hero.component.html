@@ -1,6 +1,13 @@
-<div id="hero" class="flex flex-col w-full h-screen items-center justify-center">
+<div id="hero" *ngIf="!activeGame" class="flex flex-col w-full h-screen items-center justify-center rounded-b-lg">
     <div class="text-7xl text-gray-300">Challenge Tracker</div>
     <span class="text-gray-300 m-4">Behalt den Überblick über alle Spiele und Statistiken</span>
-    <button mat-raised-button color="primary">Los geht's!</button>    
+    <button mat-raised-button color="primary"><a routerLink="/games">Wähl dein nächsten Titel!</a></button>
 
+</div>
+
+<div id="heroActive" *ngIf="activeGame" class="flex flex-col w-full h-screen items-center justify-center border-b-4 rounded-xl border-gray-800">
+  <div class="flex mb-2">
+    <span class="text-white text-5xl">{{activeGame.name}}</span>
+  </div>
+  <app-timer></app-timer>
 </div>

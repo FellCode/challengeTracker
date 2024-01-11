@@ -28,7 +28,7 @@ export class DataStorageService {
 
   fetchGames(){
     return this.http
-    .get<Game[]>(this.BASE_URL)
+    .get<Game>(this.BASE_URL)
     .pipe(
       map(response => this.convertPlatformToEnum(response)),
       map(response => this.convertGenreToEnum(response)),
@@ -50,6 +50,22 @@ export class DataStorageService {
     });
   }
 
+  uploadImage(id: number, file: File) {
+    const formData = new FormData();
+    formData.append('id', id.toString());
+    formData.append('image', file);
+
+    this.http.put(`${this.BASE_URL}/image/${id}`, formData)
+  .subscribe(
+    res => {
+      console.log(res);
+      },
+    err => {
+      console.error(err);
+    }
+    );
+  }
+
   private convertPlatformToEnum(data: any): any {
     const enumPropertyName = 'platform';
 
@@ -66,7 +82,7 @@ export class DataStorageService {
     if (data && data[enumPropertyName] !== undefined) {
       data[enumPropertyName] = this.getEnumValueFromString(Genre, data[enumPropertyName]);
     }
-
+    console.log(data)
     return data;
   }
 
@@ -76,5 +92,9 @@ export class DataStorageService {
     } else {
       return undefined;
     }
+  }
+
+  mapImageData(data: any): any {
+
   }
 }
