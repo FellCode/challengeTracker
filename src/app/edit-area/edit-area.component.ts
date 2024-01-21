@@ -4,6 +4,7 @@ import { Genre } from '../model/genre';
 import { Platform } from '../model/platform';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { DataStorageService } from 'src/app/services/data-storage.service';
+import { DateConverterService } from 'src/app/services/date-converter.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class EditAreaComponent implements OnInit {
 
   editForm!: FormGroup;
 
-  constructor(private fb: FormBuilder,private dataStorageService: DataStorageService) {}
+  constructor(private fb: FormBuilder,private dataStorageService: DataStorageService, private dateConverter: DateConverterService) {}
 
   ngOnInit() {
     this.initForm()
@@ -69,8 +70,8 @@ export class EditAreaComponent implements OnInit {
     this.game.name = this.editForm.value.name;
     this.game.genre = this.editForm.value.genre;
     this.game.platform = this.editForm.value.platform;
-    this.game.startDate = this.editForm.value.startDate;
-    this.game.finishedDate = this.editForm.value.finishedDate;
+    this.game.startDate = this.dateConverter.convertDateForDatabase(new Date(this.editForm.value.startDate));
+    this.game.finishedDate = this.dateConverter.convertDateForDatabase(new Date(this.editForm.value.finishedDate));
     this.game.notes = this.editForm.value.notes;
     this.game.rating = this.editForm.value.rating;
     console.dir(this.game)

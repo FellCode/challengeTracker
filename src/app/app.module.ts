@@ -18,7 +18,6 @@ import { ListEntryComponent } from './list-entry/list-entry.component';
 import { TimerComponent } from './timer/timer.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { EditAreaComponent } from './edit-area/edit-area.component';
-import { FinishPopupComponent } from './finish-popup/finish-popup.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 
 import {MatButtonModule} from '@angular/material/button';
@@ -30,7 +29,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-//import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
+import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import { MAT_DATE_LOCALE } from "@angular/material/core";
 
 @NgModule({
@@ -47,7 +46,6 @@ import { MAT_DATE_LOCALE } from "@angular/material/core";
     TimerComponent,
     EditAreaComponent,
     FilterComponent,
-    FinishPopupComponent,
     ConfirmationDialogComponent,
   ],
   imports: [
@@ -68,8 +66,8 @@ import { MAT_DATE_LOCALE } from "@angular/material/core";
     MatCheckboxModule
   ],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-    //{ provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
+    { provide: MAT_DATE_LOCALE, useValue: 'de-DE' },
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     ],
   bootstrap: [AppComponent]
 })

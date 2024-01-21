@@ -3,6 +3,7 @@ import { Game } from '../model/game';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../components/confirmation-dialog/confirmation-dialog.component'
 import { DataStorageService } from 'src/app/services/data-storage.service';
+import { DateConverterService } from 'src/app/services/date-converter.service';
 
 @Component({
   selector: 'app-list-entry',
@@ -14,7 +15,7 @@ export class ListEntryComponent{
   game!: Game;
   editMode: boolean = false;
 
-  constructor(private dialogService : MatDialog, private dataStorage: DataStorageService){}
+  constructor(private dialogService : MatDialog, private dataStorage: DataStorageService, private dateConverter: DateConverterService){}
 
   getImageURL(game : Game) : string {
     return `https://via.assets.so/game.png?id=${game.id}&q=95&w=300&h=200&fit=fill`
@@ -38,7 +39,7 @@ export class ListEntryComponent{
     })
 
     dialogRef.afterClosed().subscribe(result => {
-      this.game.finishedDate = new Date(result)
+      this.game.finishedDate = this.dateConverter.convertDateForDatabase(result);
       this.game.done = true;
       this.dataStorage.updateGame(this.game);
     });
