@@ -1,5 +1,4 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ConfirmationDialogModel } from '../../confirmation-dialog-model'
 
 
@@ -9,21 +8,19 @@ import { ConfirmationDialogModel } from '../../confirmation-dialog-model'
   styleUrls: ['./confirmation-dialog.component.css']
 })
 export class ConfirmationDialogComponent {
-  title: string;
-  message: string;
+  //title: string;
+  //message: string;
   inputValue: string = '';
 
-  constructor(public dialogRef: MatDialogRef<ConfirmationDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: ConfirmationDialogModel) {
-    this.title = data.title;
-    this.message = data.message;
+  constructor() {
+
   }
 
   onConfirm(): void {
-    this.dialogRef.close(this.inputValue);
+    //this.dialogRef.close(this.inputValue);
   }
 
   onDismiss(): void {
-    this.dialogRef.close(false);
+    //this.dialogRef.close(false);
   }
 }

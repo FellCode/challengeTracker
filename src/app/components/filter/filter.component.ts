@@ -3,6 +3,7 @@ import { Platform } from '../../model/platform';
 import { Genre } from '../../model/genre';
 import { Filter } from '../../model/filter';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 @Component({

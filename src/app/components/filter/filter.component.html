@@ -1,36 +1,23 @@
-<div class="flex flex-col w-full">
-  <h2 class="font-bold text-white p-2"> Filter </h2>
-  <div class="w-full">
+<p-fieldset legend="Filter" [toggleable]="true">
     <form [formGroup]="filterForm">
-      <mat-form-field class="w-full">
-        <mat-label>Suche nach Namen...</mat-label>
-        <input class="w-full" matInput type="text" formControlName="name">
-      </mat-form-field>
-      <mat-form-field class="w-full">
-        <mat-label>Suche nach Plattform... </mat-label>
-        <mat-select class="w-full" formControlName="platform">
-          <mat-option>---</mat-option>
-          <mat-option *ngFor="let item of getPlatformItems()" value = {{item}}>
-            {{item}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="w-full">
-        <mat-label>Suche nach Genre...</mat-label>
-        <mat-select class="w-full" formControlName="genre">
-          <mat-option *ngFor="let item of getGenreItems()" value = {{item}}>
-            {{item}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <div class="w-full bg-white rounded-t-sm p-2">
-        <mat-checkbox color="primary" formControlName="finished">Abgeschlossen</mat-checkbox>
+      <div class="w-full p-2">
+        <span class="p-float-label w-full">
+          <input id="name" class="w-full" type="text" pInputText formControlName="name"/>
+          <label for="name">Suche nach Namen...</label>
+        </span>
+      </div>
+      <div class="w-full p-2">
+        <p-dropdown styleClass="w-full" formControlName="platform" [options]="getPlatformItems()" placeholder="Suche nach Plattform..."></p-dropdown>
+      </div>
+      <div class="w-full p-2">
+        <p-dropdown styleClass="w-full" formControlName="genre" [options]="getGenreItems()" placeholder="Suche nach Genre..."></p-dropdown>
+      </div>
+      <div class="w-full p-2">
+        <p-checkbox formControlName="finished" [binary]="true" inputId="finished" label="Abgeschlossen"></p-checkbox>
       </div>
       <div class="flex flex-row-reverse">
-         <button mat-raised-button color="primary" (click)="resetFilter()" class="mt-6">Filter zurücksetzen</button>
+         <p-button (click)="resetFilter()" class="mt-6">Filter zurücksetzen</p-button>
       </div>
      </form>
-  </div>
-</div>
-
+</p-fieldset>
 

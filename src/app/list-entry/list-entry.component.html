@@ -7,13 +7,13 @@
           <div class="flex-col ml-2 w-full">
             <span class="font-bold">{{game.name}}</span>
             <div class="text- font-thin text-sm pt-1">
-              <mat-chip *ngIf="game.genre" disabled>{{game.genre | titlecase}}</mat-chip>
-              <mat-chip *ngIf="game.platform" disabled>{{game.platform}}</mat-chip>
-              <mat-chip disabled>{{game.rating ? game.rating : 'Unrated'}}
-                <mat-icon *ngIf="game.rating" matChipTrailingIcon>star</mat-icon>
-              </mat-chip>
+              <p-chip *ngIf="game.genre" disabled>{{game.genre | titlecase}}</p-chip>
+              <p-chip *ngIf="game.platform" disabled>{{game.platform}}</p-chip>
+              <p-chip disabled>{{game.rating ? game.rating : 'Unrated'}}
+                <!-- <mat-icon *ngIf="game.rating" matChipTrailingIcon>star</mat-icon> -->
+              </p-chip>
             </div>
-            <mat-icon class="pt-2" aria-hidden="false" aria-label="Example home icon" fontIcon="sports_score"></mat-icon>{{game.finishedDate ? (game.finishedDate | date:'dd.MM.yyyy') : "-"}}
+            <!-- <mat-icon class="pt-2" aria-hidden="false" aria-label="Example home icon" fontIcon="sports_score"></mat-icon>{{game.finishedDate ? (game.finishedDate | date:'dd.MM.yyyy') : "-"}} -->
             <div class="flex flex-row-reverse">
               <button (click)="toggleEdit()" class="m-2" mat-raised-button color="primary" disabled="{{editMode}}">Bearbeiten</button>
               <button (click) = "openFinishDialog()" *ngIf="isCompletable()" class="m-2" mat-raised-button color="primary">Abschließen</button>

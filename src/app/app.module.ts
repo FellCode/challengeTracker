@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { GamesComponent } from './pages/games/games.component';
@@ -19,18 +18,14 @@ import { TimerComponent } from './timer/timer.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { EditAreaComponent } from './edit-area/edit-area.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
-
-import {MatButtonModule} from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatIconModule} from '@angular/material/icon';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
-import { MAT_DATE_LOCALE } from "@angular/material/core";
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { ChipModule } from 'primeng/chip';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { CheckboxModule } from 'primeng/checkbox';
+import { ButtonModule } from 'primeng/button';
+import { FieldsetModule } from 'primeng/fieldset';
+import { MenubarModule } from 'primeng/menubar';
 
 @NgModule({
   declarations: [
@@ -55,19 +50,15 @@ import { MAT_DATE_LOCALE } from "@angular/material/core";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatInputModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatChipsModule,
-    MatIconModule,
-    MatCheckboxModule
+    ChipModule,
+    InputTextModule,
+    DropdownModule,
+    CheckboxModule,
+    ButtonModule,
+    FieldsetModule,
+    MenubarModule
   ],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'de-DE' },
-    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     ],
   bootstrap: [AppComponent]
 })
