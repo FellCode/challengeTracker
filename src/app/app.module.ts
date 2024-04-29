@@ -26,6 +26,12 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { ButtonModule } from 'primeng/button';
 import { FieldsetModule } from 'primeng/fieldset';
 import { MenubarModule } from 'primeng/menubar';
+import { CardModule } from 'primeng/card';
+import { DividerModule } from 'primeng/divider';
+import { CalendarModule } from 'primeng/calendar';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +62,12 @@ import { MenubarModule } from 'primeng/menubar';
     CheckboxModule,
     ButtonModule,
     FieldsetModule,
-    MenubarModule
+    MenubarModule,
+    CardModule,
+    DividerModule,
+    CalendarModule,
+    InputNumberModule,
+    InputTextareaModule
   ],
   providers: [
     ],

@@ -1,23 +1,25 @@
-<p-fieldset legend="Filter" [toggleable]="true">
-    <form [formGroup]="filterForm">
-      <div class="w-full p-2">
-        <span class="p-float-label w-full">
-          <input id="name" class="w-full" type="text" pInputText formControlName="name"/>
-          <label for="name">Suche nach Namen...</label>
-        </span>
-      </div>
-      <div class="w-full p-2">
-        <p-dropdown styleClass="w-full" formControlName="platform" [options]="getPlatformItems()" placeholder="Suche nach Plattform..."></p-dropdown>
-      </div>
-      <div class="w-full p-2">
-        <p-dropdown styleClass="w-full" formControlName="genre" [options]="getGenreItems()" placeholder="Suche nach Genre..."></p-dropdown>
-      </div>
-      <div class="w-full p-2">
-        <p-checkbox formControlName="finished" [binary]="true" inputId="finished" label="Abgeschlossen"></p-checkbox>
-      </div>
-      <div class="flex flex-row-reverse">
-         <p-button (click)="resetFilter()" class="mt-6">Filter zurücksetzen</p-button>
-      </div>
-     </form>
-</p-fieldset>
+<p-card header="Filter">
+    <div>
+      <form [formGroup]="filterForm">
+        <div class="w-full p-2">
+          <span class="p-float-label w-full">
+            <input id="name" class="w-full" type="text" pInputText formControlName="name"/>
+            <label for="name">Suche nach Namen...</label>
+          </span>
+        </div>
+        <div class="w-full p-2">
+          <p-dropdown [showClear]="true" styleClass="w-full" formControlName="platform" [options]="getPlatformItems()" placeholder="Suche nach Plattform..."></p-dropdown>
+        </div>
+        <div class="w-full p-2">
+          <p-dropdown [showClear]="true" styleClass="w-full" formControlName="genre" [options]="getGenreItems()" placeholder="Suche nach Genre..."></p-dropdown>
+        </div>
+        <div class="w-full p-2">
+          <p-checkbox formControlName="finished" [binary]="true" inputId="finished" label="Abgeschlossen"></p-checkbox>
+        </div>
+        <div class="flex flex-row-reverse">
+          <p-button (click)="resetFilter()" class="mt-6">Filter zurücksetzen</p-button>
+        </div>
+      </form>
+    </div>
+</p-card>
 

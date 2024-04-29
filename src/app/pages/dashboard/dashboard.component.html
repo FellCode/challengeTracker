@@ -27,14 +27,14 @@
           class="flex-grow"
           title='Top 5 Spiele'>
           <ul>
-            <li *ngFor="let game of getFiveBestGames() index as i">{{i+1}}. {{game}}</li>
+            <li class="mb-3"*ngFor="let game of getFiveBestGames()">{{game}}</li>
           </ul>
         </app-statistic-fieldset>
         <app-statistic-fieldset
           class="flex-grow"
           title='Flop 5 Spiele'>
           <ul>
-            <li *ngFor="let game of getFiveWorstGames() index as i">{{i+1}}. {{game}}</li>
+            <li class="mb-3" *ngFor="let game of getFiveWorstGames()">{{game}}</li>
           </ul>
         </app-statistic-fieldset>
     </div>

@@ -1,26 +1,28 @@
-<div class="flex flex-row flex-wrap justify-center text-lg font-serif m-6 ml-2">
+<div class="flex flex-row flex-wrap justify-center text-lg m-6 ml-2">
 
       <div class=" flex bg-gray-800 flex-grow flex-row text-white rounded-md p-2 w-full">
-          <div class="flex mr-2">
+          <div class="flex mr-2 border-2 border-slate-700">
             <img src="{{getImageURL(game)}}" alt="Game Cover Image"/>
           </div>
-          <div class="flex-col ml-2 w-full">
+          <div class="flex-col ml-2 w-full flex justify-between">
             <span class="font-bold">{{game.name}}</span>
-            <div class="text- font-thin text-sm pt-1">
+            <div class="card flex align-items-center gap-2 flex-wrap">
               <p-chip *ngIf="game.genre" disabled>{{game.genre | titlecase}}</p-chip>
               <p-chip *ngIf="game.platform" disabled>{{game.platform}}</p-chip>
-              <p-chip disabled>{{game.rating ? game.rating : 'Unrated'}}
-                <!-- <mat-icon *ngIf="game.rating" matChipTrailingIcon>star</mat-icon> -->
-              </p-chip>
+              <p-chip *ngIf="!game.rating">Unrated</p-chip>
+              <p-chip *ngIf="game.rating" icon="pi pi-star"></p-chip>
             </div>
-            <!-- <mat-icon class="pt-2" aria-hidden="false" aria-label="Example home icon" fontIcon="sports_score"></mat-icon>{{game.finishedDate ? (game.finishedDate | date:'dd.MM.yyyy') : "-"}} -->
+            <div>
+            <i class="pi pi-flag-fill mr-2"></i>{{game.finishedDate ? (game.finishedDate | date:'dd.MM.yyyy') : "-"}}
+            </div>
             <div class="flex flex-row-reverse">
-              <button (click)="toggleEdit()" class="m-2" mat-raised-button color="primary" disabled="{{editMode}}">Bearbeiten</button>
-              <button (click) = "openFinishDialog()" *ngIf="isCompletable()" class="m-2" mat-raised-button color="primary">Abschließen</button>
+              <p-button (click)="toggleEdit()" styleClass="m-2" disabled="{{editMode}}">Bearbeiten</p-button>
+              <p-button (click) = "openFinishDialog()" *ngIf="isCompletable()" styleClass="m-2">Abschließen</p-button>
             </div>
           </div>
       </div>
       <app-edit-area *ngIf="editMode"
+      class="w-full"
       (toggleEdit) = "toggleEdit($event)"
       [game]="game">
       </app-edit-area>
