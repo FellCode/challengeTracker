@@ -5,7 +5,7 @@ with open('games.txt', 'r') as file:
 
 api_endpoint = 'http://localhost:8080/api/v1/games'
 
-for name in names[0:9]:
+for name in names[0:100]:
     data = {
         'name': name,
         'platform': 'GBA',

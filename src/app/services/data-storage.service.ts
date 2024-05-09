@@ -22,7 +22,7 @@ export class DataStorageService {
         games
       )
     .subscribe(response => {
-      console.log(response);
+      
     });  
   }
 
@@ -34,7 +34,6 @@ export class DataStorageService {
       map(response => this.convertGenreToEnum(response)),
       tap(games => {
         this.gamesService.setGames(games);
-        console.log(games);
       })
     );
   }
@@ -42,7 +41,7 @@ export class DataStorageService {
   updateGame(updatedGame: Game){
     this.http
       .put(
-  `${this.BASE_URL}`,
+  `${this.BASE_URL}/${updatedGame.id}`,
         updatedGame
         )
     .subscribe(response => {
@@ -82,7 +81,6 @@ export class DataStorageService {
     if (data && data[enumPropertyName] !== undefined) {
       data[enumPropertyName] = this.getEnumValueFromString(Genre, data[enumPropertyName]);
     }
-    console.log(data)
     return data;
   }
 

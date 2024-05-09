@@ -47,7 +47,6 @@ export class FilterComponent implements OnInit{
 
   subscribeToFormChanges() {
     this.filterForm.valueChanges.subscribe((filterValues: Filter) => {
-      console.log(filterValues.finished)
       this.filterChanged.emit(filterValues);
     });
   }

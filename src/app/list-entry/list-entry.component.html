@@ -15,9 +15,9 @@
             <div>
             <i class="pi pi-flag-fill mr-2"></i>{{game.finishedDate ? (game.finishedDate | date:'dd.MM.yyyy') : "-"}}
             </div>
-            <div class="flex flex-row-reverse">
-              <p-button (click)="toggleEdit()" styleClass="m-2" disabled="{{editMode}}">Bearbeiten</p-button>
-              <p-button (click) = "openFinishDialog()" *ngIf="isCompletable()" styleClass="m-2">Abschließen</p-button>
+            <div class="flex flex-row-reverse pr-2">
+              <p-button (click)="toggleEdit()" class="ml-4" disabled="{{editMode}}">Bearbeiten</p-button>
+              <p-button (click) = "openFinishDialog()" *ngIf="isCompletable()">Abschließen</p-button>
             </div>
           </div>
       </div>

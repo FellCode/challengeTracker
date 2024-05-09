@@ -5,6 +5,8 @@ import { Platform } from '../model/platform';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { DataStorageService } from 'src/app/services/data-storage.service';
 import { DateConverterService } from 'src/app/services/date-converter.service';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -19,9 +21,12 @@ export class EditAreaComponent implements OnInit {
   @Output()
   toggleEdit = new EventEmitter<boolean>();
 
+  ref: DynamicDialogRef | undefined;
+
   editForm!: FormGroup;
 
-  constructor(private fb: FormBuilder,private dataStorageService: DataStorageService, private dateConverter: DateConverterService) {}
+  constructor(private fb: FormBuilder,private dataStorageService: DataStorageService, 
+    private dateConverter: DateConverterService,public dialogService: DialogService, public messageService: MessageService) {}
 
   ngOnInit() {
     this.initForm()
@@ -57,21 +62,33 @@ export class EditAreaComponent implements OnInit {
     this.toggleEdit.emit(false);
   }
 
-//  onFileSelected(event: any) {
-//    this.selectedFile = event.target.files[0];
-//  }
+  onShow() {
+    this.ref = this.dialogService.open(ProductListDemo, {
+        header: 'Select a Product',
+        width: '50%',
+        contentStyle: { overflow: 'auto' },
+        baseZIndex: 10000,
+        maximizable: false
+    });
 
-//  uploadImage(){
-//    this.dataStorageService.uploadImage(this.game.id,this.selectedFile)
-//  }
+    this.ref.onClose.subscribe((product: Product) => {
+        if (product) {
+            this.messageService.add({ severity: 'info', summary: 'Product Selected', detail: product.name });
+        }
+    });
+}
 
 
   private updateGameFromForm(){
     this.game.name = this.editForm.value.name;
     this.game.genre = this.editForm.value.genre;
     this.game.platform = this.editForm.value.platform;
-    this.game.startDate = this.dateConverter.convertDateForDatabase(new Date(this.editForm.value.startDate));
-    this.game.finishedDate = this.dateConverter.convertDateForDatabase(new Date(this.editForm.value.finishedDate));
+    if(this.editForm.value.startDate)
+      this.game.startDate = this.dateConverter.convertDateForDatabase(new Date(this.editForm.value.startDate));
+
+    if(this.editForm.value.finishedDate)
+      this.game.startDate = this.dateConverter.convertDateForDatabase(new Date(this.editForm.value.finishedDate));
+    
     this.game.notes = this.editForm.value.notes;
     this.game.rating = this.editForm.value.rating;
     console.dir(this.game)

@@ -31,6 +31,9 @@ import { DividerModule } from 'primeng/divider';
 import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { PaginatorModule } from 'primeng/paginator';
+import { PanelModule } from 'primeng/panel';
+
 
 
 @NgModule({
@@ -67,7 +70,9 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     DividerModule,
     CalendarModule,
     InputNumberModule,
-    InputTextareaModule
+    InputTextareaModule,
+    PaginatorModule,
+    PanelModule
   ],
   providers: [
     ],
