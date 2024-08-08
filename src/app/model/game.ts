@@ -8,12 +8,12 @@ export class Game {
     public genre: Genre;
     public platform: Platform;
     public rating: number;
-    public startDate: Date;
-    public finishedDate: Date;
+    public startDate: Date | undefined;
+    public finishedDate: Date | undefined;
     public done: boolean;
     public elapsedTimeInSeconds : number;
 
-    constructor(id: number,name: string, notes: string, genre: Genre, platform: Platform, rating: number, startDate:Date, finishedDate:Date, done:boolean, elapsedTimeInSecodns: number){
+    constructor(id: number,name: string, notes: string, genre: Genre, platform: Platform, rating: number, startDate:Date | undefined, finishedDate:Date, done:boolean, elapsedTimeInSecodns: number){
         this.id = id;
         this.name = name;
         this.notes = notes;

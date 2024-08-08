@@ -62,7 +62,7 @@ export class EditAreaComponent implements OnInit {
     this.toggleEdit.emit(false);
   }
 
-  onShow() {
+/*   onShow() {
     this.ref = this.dialogService.open(ProductListDemo, {
         header: 'Select a Product',
         width: '50%',
@@ -76,7 +76,7 @@ export class EditAreaComponent implements OnInit {
             this.messageService.add({ severity: 'info', summary: 'Product Selected', detail: product.name });
         }
     });
-}
+} */
 
 
   private updateGameFromForm(){

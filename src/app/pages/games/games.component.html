@@ -1,21 +1,21 @@
 <div class="flex flex-row">
   <div class="flex w-1/4 mt-4 ml-6 mr-2 p-2">
-    <app-filter class="w-full" (filterChanged)="updateFilter($event)"></app-filter>
+    <app-filter class="w-full"></app-filter>
   </div>
 
   <div class="flex w-3/4 flex-col">
-      <ul *ngIf="games.length > 0">
-        <li *ngFor="let game of $pageContent | async;">
+      <ul *ngIf="pageContent().length > 0">
+        <li *ngFor="let game of pageContent()">
             <app-list-entry
                 [game]="game">
             </app-list-entry>
         </li>
     </ul>
-    <div *ngIf="games.length <= 0 || filteredGames.length <= 0" class="m-6">
+    <div *ngIf="pageContent().length <= 0" class="m-6">
       <h1 class="text-white">Keine Spiele gefunden</h1>
     </div>
     <div>
-      <p-paginator *ngIf="filteredGames.length > 0" styleClass="m-6" (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="this.filteredGames.length" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+       <p-paginator *ngIf="games().length > 0" styleClass="m-6" (onPageChange)="onPageChange($event)" [first]="first()" [rows]="rows()" [totalRecords]="games().length" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
     </div>
   </div>
 </div>

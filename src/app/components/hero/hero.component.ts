@@ -1,6 +1,7 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, Signal, inject } from '@angular/core';
 import { Game } from '../../model/game';
 import { GamesService } from '../../services/games.service';
+import { GamesStore } from 'src/app/store/games.store';
 
 @Component({
   selector: 'app-hero',
@@ -8,11 +9,11 @@ import { GamesService } from '../../services/games.service';
   styleUrls: ['./hero.component.css']
 })
 export class HeroComponent implements OnInit{
-  gamesService : GamesService = inject(GamesService);
-  activeGame : Game | undefined;
+  #gameStore = inject(GamesStore)
+  activeGame: Signal<Game | undefined> = this.#gameStore.activeGame
 
   ngOnInit(): void {
-    this.activeGame = this.gamesService.getCurrentGame();
+    console.log(this.activeGame())
   }
 
 }
